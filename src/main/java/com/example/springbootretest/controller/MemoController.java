@@ -15,9 +15,9 @@ public class MemoController {
     static List<Memo> memos = new ArrayList<>();
 
     static {
-        memos.add(new Memo(1L, "title", "description"));
-        memos.add(new Memo(2L, "another title", "another description"));
-        memos.add(new Memo(3L, "other title", "other description"));
+        memos.add(Memo.builder().id(1L).title("title").content("description").build());
+        memos.add(Memo.builder().id(2L).title("new title").content("new description").build());
+        memos.add(Memo.builder().id(3L).title("other title").content("new other description").build());
     }
 
     @GetMapping
