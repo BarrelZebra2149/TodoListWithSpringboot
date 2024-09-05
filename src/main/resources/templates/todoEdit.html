@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Memo</title>
+</head>
+<body>
+<h1>Edit Memo</h1>
+<form th:action="@{/memos/edit}" th:object="${memo}" method="post">
+  <input type="hidden" th:field="*{id}"/>
+  <div>
+    <label>Title:</label>
+    <input type="text" th:field="*{title}"/>
+  </div>
+  <div>
+    <label>Content:</label>
+    <input type="text" th:field="*{content}"/>
+  </div>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+<a href="/memos">Back to list</a>
+</body>
+</html>

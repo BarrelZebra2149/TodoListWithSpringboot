@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Memo List</title>
+</head>
+<body>
+<a href="memos/create"><button>Create Memo</button></a>
+<hr>
+<h1>Memos List</h1>
+<table th:border="1">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="memo : ${memos}">
+        <td th:text="${memo.id}">1</td>
+        <td th:text="${memo.title}">Memo Title</td>
+        <td th:text="${memo.content}">Memo Content</td>
+        <td>
+            <!-- Modify Button -->
+            <form th:action="@{/memos/edit/{id}(id=${memo.id})}" method="get">
+                <button type="submit">Modify</button>
+            </form>
+
+            <!-- Delete Button -->
+            <form th:action="@{/memos/delete/{id}(id=${memo.id})}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
